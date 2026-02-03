@@ -13,7 +13,7 @@ const ClosingSection = () => {
   return (
     <section className="py-24 md:py-40 bg-background relative">
       {/* Subtle vignette effect */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: 'radial-gradient(ellipse at center, transparent 0%, hsl(var(--cream) / 0.8) 100%)',
@@ -28,7 +28,7 @@ const ClosingSection = () => {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="font-script text-gold text-2xl">The Closing</span>
-          
+
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mt-6 mb-8">
             No matter what you decide,
             <br />
@@ -75,8 +75,8 @@ const ClosingSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
-            <Button 
-              variant="romantic" 
+            <Button
+              variant="romantic"
               size="lg"
               className="group"
               onClick={() => window.location.href = 'mailto:?subject=My%20Thoughts'}
@@ -84,9 +84,9 @@ const ClosingSection = () => {
               <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
               Send Me Your Thoughts
             </Button>
-            
-            <Button 
-              variant="romantic-outline" 
+
+            <Button
+              variant="romantic-outline"
               size="lg"
               className="group"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

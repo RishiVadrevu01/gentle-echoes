@@ -44,11 +44,11 @@ const FloatingPetals = () => {
           style={{
             left: `${Math.random() * 100}%`,
             top: `-5%`,
-            background: i % 3 === 0 
+            background: i % 3 === 0
               ? 'hsl(var(--peach) / 0.6)'
-              : i % 3 === 1 
-              ? 'hsl(var(--lavender) / 0.5)'
-              : 'hsl(var(--dusty-rose) / 0.5)',
+              : i % 3 === 1
+                ? 'hsl(var(--lavender) / 0.5)'
+                : 'hsl(var(--dusty-rose) / 0.5)',
           }}
           animate={{
             y: ['0vh', '105vh'],

@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import hugImg from "@/assets/hug.jpeg";
+import lake2Img from "@/assets/lake2.jpeg";
+import kissImg from "@/assets/kiss.jpeg";
+import funnyImg from "@/assets/funny.jpeg";
 
 interface Memory {
   season: string;
@@ -8,6 +12,7 @@ interface Memory {
   description: string;
   emotionalNote: string;
   icon: string;
+  image?: string;
 }
 
 const memories: Memory[] = [
@@ -16,28 +21,32 @@ const memories: Memory[] = [
     icon: "🌸",
     title: "The First Conversation",
     description: "You laughed at something I said—not because it was particularly funny, but because you were generous with your joy. I remember thinking how rare that was.",
-    emotionalNote: "That's when I started paying attention."
+    emotionalNote: "That's when I started paying attention.",
+    image: hugImg
   },
   {
     season: "Summer 2023",
     icon: "☀️",
     title: "The Long Walk",
     description: "We walked for hours without noticing time. The city felt different with you—smaller, kinder, more beautiful. Every street corner held a conversation waiting to happen.",
-    emotionalNote: "I learned that home isn't a place."
+    emotionalNote: "I learned that home isn't a place.",
+    image: lake2Img
   },
   {
     season: "Autumn 2023",
     icon: "🍂",
     title: "The Quiet Moment",
     description: "We sat in comfortable silence, and I realized I didn't need to fill every gap with words. Being present with you was enough. More than enough.",
-    emotionalNote: "Silence became a language."
+    emotionalNote: "Silence became a language.",
+    image: kissImg
   },
   {
     season: "Winter 2024",
     icon: "❄️",
     title: "The Difficult Truth",
     description: "Things got harder. We stumbled. I made mistakes I'm still learning from. But even in the struggle, I saw your strength—and my own need to grow.",
-    emotionalNote: "Love doesn't mean perfection."
+    emotionalNote: "Love doesn't mean perfection.",
+    image: funnyImg
   },
 ];
 
@@ -59,8 +68,23 @@ const TimelineCard = ({ memory, index }: { memory: Memory; index: number }) => {
         <div className="timeline-dot" />
       </div>
 
-      {/* Spacer for alternating layout */}
-      <div className="hidden md:block w-1/2" />
+      {/* Spacer / Image for alternating layout */}
+      <div className="hidden md:flex w-1/2 items-center justify-center p-4">
+        {memory.image && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="w-full max-w-sm aspect-[4/5] rounded-2xl overflow-hidden shadow-xl rotate-2 hover:rotate-0 transition-transform duration-500"
+          >
+            <img
+              src={memory.image}
+              alt={memory.title}
+              className="w-full h-full object-cover opacity-40 hover:opacity-80 transition-opacity duration-700"
+            />
+          </motion.div>
+        )}
+      </div>
 
       {/* Card */}
       <div className={`w-full md:w-1/2 ${isEven ? 'md:pr-12' : 'md:pl-12'}`}>
@@ -69,15 +93,15 @@ const TimelineCard = ({ memory, index }: { memory: Memory; index: number }) => {
             <span className="text-2xl">{memory.icon}</span>
             <span className="font-script text-xl text-gold">{memory.season}</span>
           </div>
-          
+
           <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-4">
             "{memory.title}"
           </h3>
-          
+
           <p className="text-muted-foreground leading-relaxed mb-6">
             {memory.description}
           </p>
-          
+
           <div className="border-l-2 border-gold/40 pl-4">
             <p className="text-foreground/80 italic font-serif">
               → {memory.emotionalNote}

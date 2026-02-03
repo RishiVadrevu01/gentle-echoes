@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import heroBg from "@/assets/vibha-photo .jpeg";
+import lakeView from "@/assets/lake-view.jpeg";
+import collageLake from "@/assets/collage-lake.jpeg";
 
 const HeroSection = () => {
   const scrollToNext = () => {
@@ -9,6 +12,32 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center gradient-cream-blush watercolor-overlay overflow-hidden">
+      {/* Background Image with Fade */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+        {/* collage-lake placed specifically to the left area */}
+        <div className="absolute left-[5%] top-1/2 -translate-y-1/2 w-[30%] h-[60vh] flex items-center justify-center">
+          <img
+            src={collageLake}
+            alt="Collage Lake"
+            className="max-w-full max-h-full object-contain opacity-20 rounded-xl"
+          />
+        </div>
+        {/* vibha-photo remains centered */}
+        <img
+          src={heroBg}
+          alt="Vibha"
+          className="max-w-[85%] max-h-[80vh] object-contain opacity-20 rounded-xl"
+        />
+        {/* lake-view placed specifically to the right area */}
+        <div className="absolute right-[5%] top-1/2 -translate-y-1/2 w-[30%] h-[60vh] flex items-center justify-center">
+          <img
+            src={lakeView}
+            alt="Lake View"
+            className="max-w-full max-h-full object-contain opacity-20 rounded-xl"
+          />
+        </div>
+      </div>
+
       {/* Floating decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
