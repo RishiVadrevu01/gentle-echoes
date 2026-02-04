@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import hugImg from "@/assets/hug.jpeg";
 import lake2Img from "@/assets/lake2.jpeg";
 import kissImg from "@/assets/kiss.jpeg";
@@ -58,52 +58,53 @@ const TimelineCard = ({ memory, index }: { memory: Memory; index: number }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative flex items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col md:gap-8`}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative flex items-center w-full ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col gap-12 md:gap-0 mb-16 md:mb-32`}
     >
-      {/* Timeline dot */}
-      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10">
-        <div className="timeline-dot" />
+      {/* Timeline dot - centered on MD+ */}
+      <div className="hidden md:flex absolute left-1/2 -translate-x-[0.5px] top-1/2 -translate-y-1/2 z-20">
+        <div className="w-4 h-4 rounded-full border-4 border-background bg-lavender/60 shadow-sm" />
       </div>
 
-      {/* Spacer / Image for alternating layout */}
-      <div className="hidden md:flex w-1/2 items-center justify-center p-4">
+      {/* Image container */}
+      <div className={`w-full md:w-1/2 flex items-center ${isEven ? 'md:justify-end md:pr-8' : 'md:justify-start md:pl-8'} justify-center px-4`}>
         {memory.image && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="w-full max-w-sm aspect-[4/5] rounded-2xl overflow-hidden shadow-xl rotate-2 hover:rotate-0 transition-transform duration-500"
+            transition={{ duration: 1 }}
+            className="w-full max-w-[300px] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl"
           >
             <img
               src={memory.image}
               alt={memory.title}
-              className="w-full h-full object-cover opacity-40 hover:opacity-80 transition-opacity duration-700"
+              className="w-full h-full object-cover saturate-[0.8] contrast-[1.1] opacity-40 hover:opacity-100 hover:saturate-100 transition-all duration-700"
             />
           </motion.div>
         )}
       </div>
 
-      {/* Card */}
-      <div className={`w-full md:w-1/2 ${isEven ? 'md:pr-12' : 'md:pl-12'}`}>
-        <div className="card-romantic-hover">
-          <div className="flex items-center gap-3 mb-4">
+      {/* Card container */}
+      <div className={`w-full md:w-1/2 flex items-center ${isEven ? 'md:justify-start md:pl-8' : 'md:justify-end md:pr-8'} justify-center px-4`}>
+        <div className="w-full max-w-[400px] bg-white p-8 md:p-10 rounded-[2rem] shadow-xl border border-border/5">
+          <div className="flex items-center gap-2 mb-6">
             <span className="text-2xl">{memory.icon}</span>
-            <span className="font-script text-xl text-gold">{memory.season}</span>
+            <span className="font-script text-2xl text-gold/80">{memory.season}</span>
           </div>
 
-          <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-4">
+          <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-6 leading-tight">
             "{memory.title}"
           </h3>
 
-          <p className="text-muted-foreground leading-relaxed mb-6">
+          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
             {memory.description}
           </p>
 
-          <div className="border-l-2 border-gold/40 pl-4">
-            <p className="text-foreground/80 italic font-serif">
+          <div className="border-l-2 border-gold/30 pl-6">
+            <p className="text-foreground/70 italic font-serif text-lg">
               → {memory.emotionalNote}
             </p>
           </div>
@@ -116,35 +117,72 @@ const TimelineCard = ({ memory, index }: { memory: Memory; index: number }) => {
 const TimelineSection = () => {
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-50px" });
+  const vantaRef = useRef<HTMLDivElement>(null);
+  const [vantaEffect, setVantaEffect] = useState<any>(null);
+
+  useEffect(() => {
+    if (!vantaEffect && window.VANTA && vantaRef.current) {
+      setVantaEffect(
+        window.VANTA.BIRDS({
+          el: vantaRef.current,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          backgroundColor: 0xfcfbf9,
+          backgroundAlpha: 1.0,
+          color1: 0xff0000,
+          color2: 0x00d1ff,
+          colorMode: "varianceGradient",
+          quantity: 3.00,
+          birdSize: 1.00,
+          wingSpan: 30.00,
+          speedLimit: 5.00,
+          separation: 20.00,
+          alignment: 20.00,
+          cohesion: 20.00
+        })
+      );
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
 
   return (
-    <section id="journey" className="py-24 md:py-32 bg-background relative">
-      {/* Subtle background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blush/30 to-transparent pointer-events-none" />
+    <section id="journey" className="py-32 md:py-48 bg-background relative overflow-hidden">
+      {/* Vanta Birds Background Effect */}
+      <div ref={vantaRef} className="absolute inset-0 z-0 opacity-80" />
 
-      <div className="prose-romantic relative z-10">
+      {/* Subtle background overlay */}
+      <div className="absolute inset-0 bg-white/20 pointer-events-none z-[1]" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
           animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-32"
         >
-          <span className="font-script text-gold text-2xl">Chapter One</span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mt-4">
+          <span className="font-script text-gold text-3xl">Chapter One</span>
+          <h2 className="font-serif text-4xl md:text-6xl text-foreground mt-4 mb-6">
             Our Journey
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-md mx-auto">
+          <p className="text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed">
             The moments that shaped us—each one a small miracle I carry with me.
           </p>
         </motion.div>
 
         {/* Timeline */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Vertical line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-dusty-rose via-lavender to-dusty-rose" />
+        <div className="relative">
+          {/* Vertical line - exactly centered and more visible */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gold/40 -translate-x-1/2 z-0" />
 
-          <div className="space-y-12 md:space-y-20">
+          <div className="flex flex-col">
             {memories.map((memory, index) => (
               <TimelineCard key={index} memory={memory} index={index} />
             ))}

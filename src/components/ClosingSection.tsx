@@ -1,24 +1,89 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Mail, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import firstImg from "@/assets/first.jpeg";
+
+declare global {
+  interface Window {
+    VANTA: any;
+  }
+}
 
 const ClosingSection = () => {
   const contentRef = useRef(null);
   const buttonsRef = useRef(null);
   const isContentInView = useInView(contentRef, { once: true, margin: "-50px" });
   const isButtonsInView = useInView(buttonsRef, { once: true, margin: "-50px" });
+  const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 });
+  const vantaRef = useRef<HTMLDivElement>(null);
+  const [vantaEffect, setVantaEffect] = useState<any>(null);
+
+  useEffect(() => {
+    if (!vantaEffect && window.VANTA && vantaRef.current) {
+      setVantaEffect(
+        window.VANTA.BIRDS({
+          el: vantaRef.current,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 150.00,
+          minWidth: 150.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          backgroundColor: 0xfcfbf9,
+          backgroundAlpha: 1.0,
+          color1: 0xff0000,
+          color2: 0x00d1ff,
+          colorMode: "varianceGradient",
+          quantity: 3.00,
+          birdSize: 2.20,
+          wingSpan: 40.00,
+          speedLimit: 5.00,
+          separation: 20.00,
+          alignment: 20.00,
+          cohesion: 20.00
+        })
+      );
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
+
+  const handleNoHover = () => {
+    // Detect mobile for smaller movement range
+    const isMobile = window.innerWidth < 768;
+    const range = isMobile ? 150 : 400; // Smaller range for mobile
+
+    // Generate random coordinates within a reasonable range
+    const randomX = (Math.random() - 0.5) * range;
+    const randomY = (Math.random() - 0.5) * range;
+    setNoButtonPosition({ x: randomX, y: randomY });
+  };
 
   return (
-    <section className="py-24 md:py-40 bg-background relative">
-      {/* Subtle vignette effect */}
+    <section className="py-24 md:py-40 bg-background relative overflow-hidden">
+      {/* Vanta Birds Background Effect */}
+      <div ref={vantaRef} className="absolute inset-0 z-0 opacity-80" />
+
+      {/* Subtle overlay for light theme consistency */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse at center, transparent 0%, hsl(var(--cream) / 0.8) 100%)',
-        }}
+        className="absolute inset-0 pointer-events-none z-[1] bg-white/30"
       />
+
+      {/* Background Image - first.jpeg */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        <motion.img
+          initial={{ opacity: 0, scale: 1.1 }}
+          whileInView={{ opacity: 0.25, scale: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          src={firstImg}
+          alt="Memory"
+          className="w-full max-w-2xl h-auto object-contain contrast-125"
+        />
+      </div>
 
       <div className="prose-romantic text-center relative z-10">
         <motion.div
@@ -82,18 +147,24 @@ const ClosingSection = () => {
               onClick={() => window.location.href = 'mailto:?subject=My%20Thoughts'}
             >
               <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-              Send Me Your Thoughts
+              Yes
             </Button>
 
-            <Button
-              variant="romantic-outline"
-              size="lg"
-              className="group"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            <motion.div
+              animate={{ x: noButtonPosition.x, y: noButtonPosition.y }}
+              transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              onMouseEnter={handleNoHover}
             >
-              <Heart className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-              Read Again
-            </Button>
+              <Button
+                variant="romantic-outline"
+                size="lg"
+                className="group"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                <Heart className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                NO
+              </Button>
+            </motion.div>
           </div>
         </motion.div>
 

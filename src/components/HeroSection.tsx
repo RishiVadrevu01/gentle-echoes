@@ -13,27 +13,29 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center gradient-cream-blush watercolor-overlay overflow-hidden">
       {/* Background Image with Fade */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-        {/* collage-lake placed specifically to the left area */}
-        <div className="absolute left-[5%] top-1/2 -translate-y-1/2 w-[30%] h-[60vh] flex items-center justify-center">
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none px-4">
+        {/* collage-lake placed specifically to the left area - hidden on mobile, shown from md up */}
+        <div className="hidden md:flex absolute left-[5%] top-1/2 -translate-y-1/2 w-[25%] lg:w-[30%] h-[40vh] md:h-[60vh] items-center justify-center">
           <img
             src={collageLake}
             alt="Collage Lake"
-            className="max-w-full max-h-full object-contain opacity-20 rounded-xl"
+            className="max-w-full max-h-full object-contain opacity-30 md:opacity-40 saturate-125 brightness-110 rounded-xl"
           />
         </div>
+
         {/* vibha-photo remains centered */}
         <img
           src={heroBg}
           alt="Vibha"
-          className="max-w-[85%] max-h-[80vh] object-contain opacity-20 rounded-xl"
+          className="max-w-[90%] md:max-w-[85%] max-h-[60vh] md:max-h-[80vh] object-contain opacity-40 md:opacity-40 saturate-125 brightness-110 rounded-xl"
         />
-        {/* lake-view placed specifically to the right area */}
-        <div className="absolute right-[5%] top-1/2 -translate-y-1/2 w-[30%] h-[60vh] flex items-center justify-center">
+
+        {/* lake-view placed specifically to the right area - hidden on mobile, shown from md up */}
+        <div className="hidden md:flex absolute right-[5%] top-1/2 -translate-y-1/2 w-[25%] lg:w-[30%] h-[40vh] md:h-[60vh] items-center justify-center">
           <img
             src={lakeView}
             alt="Lake View"
-            className="max-w-full max-h-full object-contain opacity-20 rounded-xl"
+            className="max-w-full max-h-full object-contain opacity-30 md:opacity-40 saturate-125 brightness-110 rounded-xl"
           />
         </div>
       </div>

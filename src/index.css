@@ -130,7 +130,7 @@
 
 @layer components {
   .prose-romantic {
-    @apply max-w-[720px] mx-auto px-6;
+    @apply max-w-[720px] mx-auto px-4 md:px-6;
   }
 
   .text-balance {

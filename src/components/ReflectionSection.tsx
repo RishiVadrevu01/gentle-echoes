@@ -2,6 +2,11 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { MessageCircle, Sprout, Handshake, Sparkles } from "lucide-react";
+import collage from "@/assets/collage.jpeg";
+import cute from "@/assets/cute .jpeg";
+import sight from "@/assets/sight.jpeg";
+import star from "@/assets/star.jpeg";
+import sweater from "@/assets/sweater .jpeg";
 
 interface Reflection {
   icon: React.ElementType;
@@ -96,10 +101,96 @@ const ReflectionSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid gap-6 md:gap-8 max-w-3xl mx-auto">
-          {reflections.map((reflection, index) => (
-            <ReflectionCard key={index} reflection={reflection} index={index} />
-          ))}
+        <div className="relative max-w-3xl mx-auto px-4">
+          {/* Polaroid 1 - Top Right (Star) */}
+          <motion.div
+            initial={{ opacity: 0, rotate: 10, x: 50 }}
+            whileInView={{ opacity: 1, rotate: -5, x: 20 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="hidden lg:block absolute -right-32 xl:-right-64 top-0 z-0"
+          >
+            <div className="bg-white p-3 pb-8 shadow-xl border border-border/10 rotate-[-4deg] hover:rotate-0 transition-transform duration-500">
+              <img
+                src={star}
+                alt="Star"
+                className="w-32 xl:w-48 h-40 xl:h-56 object-cover filter saturate-110"
+              />
+              <p className="font-script text-gold text-center mt-2 text-lg">The brightest</p>
+            </div>
+          </motion.div>
+
+          {/* Polaroid 2 - Middle Left (Cute) - visible from lg */}
+          <motion.div
+            initial={{ opacity: 0, rotate: -15, x: -50 }}
+            whileInView={{ opacity: 1, rotate: 8, x: -20 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="hidden lg:block absolute -left-40 xl:-left-72 top-[10%] z-0"
+          >
+            <div className="bg-white p-3 pb-8 shadow-xl border border-border/10 rotate-[8deg] hover:rotate-0 transition-transform duration-500">
+              <img
+                src={cute}
+                alt="Cute"
+                className="w-32 xl:w-44 h-32 xl:h-44 object-cover filter saturate-125 brightness-105"
+              />
+              <p className="font-script text-gold text-center mt-2 text-lg">Pure joy</p>
+            </div>
+          </motion.div>
+
+          {/* Polaroid 3 - Middle Right (Sweater) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="hidden xl:block absolute -right-80 top-1/2 z-0"
+          >
+            <div className="bg-white p-3 pb-12 shadow-xl border border-border/10 rotate-[-2deg] hover:rotate-2 transition-transform duration-500">
+              <img
+                src={sweater}
+                alt="Sweater"
+                className="w-52 h-64 object-cover filter saturate-115"
+              />
+              <p className="font-script text-gold text-center mt-4 text-xl">Warmth</p>
+            </div>
+          </motion.div>
+
+          {/* Polaroid 4 - Bottom Left (Sight) */}
+          <motion.div
+            initial={{ opacity: 0, rotate: -20, x: -50 }}
+            whileInView={{ opacity: 1, rotate: -12, x: -40 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="hidden xl:block absolute -left-80 bottom-1/4 z-0"
+          >
+            <div className="bg-white p-3 pb-12 shadow-xl border border-border/10 rotate-[-12deg] hover:rotate-0 transition-transform duration-500">
+              <img
+                src={sight}
+                alt="Sight"
+                className="w-56 h-40 object-cover filter saturate-110 contrast-110"
+              />
+              <p className="font-script text-gold text-center mt-4 text-xl">Looking back</p>
+            </div>
+          </motion.div>
+
+          {/* Mobile Decorative Image - visible only on small screens */}
+          <div className="lg:hidden flex justify-center mb-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="bg-white p-2 pb-6 shadow-lg border border-border/5 rotate-2 max-w-[200px]"
+            >
+              <img src={star} alt="Star" className="w-full h-40 object-cover" />
+              <p className="font-script text-gold text-center mt-2">Reflection</p>
+            </motion.div>
+          </div>
+
+          <div className="grid gap-6 md:gap-8 relative z-10">
+            {reflections.map((reflection, index) => (
+              <ReflectionCard key={index} reflection={reflection} index={index} />
+            ))}
+          </div>
         </div>
 
         <motion.div

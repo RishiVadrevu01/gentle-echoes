@@ -1,6 +1,31 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import photo1 from "@/assets/vibha-photo .jpeg";
+import photo2 from "@/assets/lake-view.jpeg";
+import photo3 from "@/assets/hug.jpeg";
+
+const Sparkle = ({ delay = 0 }: { delay?: number }) => (
+  <motion.div
+    initial={{ scale: 0, opacity: 0 }}
+    animate={{
+      scale: [0, 1.2, 0],
+      opacity: [0, 1, 0],
+      rotate: [0, 180]
+    }}
+    transition={{
+      duration: 2,
+      repeat: Infinity,
+      delay,
+      ease: "easeInOut"
+    }}
+    className="absolute pointer-events-none"
+  >
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" fill="hsl(var(--gold))" />
+    </svg>
+  </motion.div>
+);
 
 interface GratitudeCard {
   title: string;
@@ -75,15 +100,33 @@ const AppreciationCard = ({ card, index }: { card: GratitudeCard; index: number 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ scale: 1.02, y: -4 }}
-      className="card-romantic text-center group cursor-default"
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+        delay: index * 0.1
+      }}
+      whileHover={{
+        scale: 1.05,
+        rotate: [0, -1, 1, 0],
+        transition: { duration: 0.3 }
+      }}
+      className="card-romantic text-center group cursor-default shadow-sm hover:shadow-xl"
     >
-      <h3 className="font-serif text-xl md:text-2xl text-foreground mb-3 group-hover:text-gold transition-colors duration-300">
-        {card.title}
-      </h3>
+      <div className="relative mb-4 inline-block">
+        <h3 className="font-serif text-xl md:text-2xl text-foreground group-hover:text-gold transition-colors duration-300">
+          {card.title}
+        </h3>
+        <motion.div
+          className="absolute -top-2 -right-6 opacity-0 group-hover:opacity-100 transition-opacity"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        >
+          ✨
+        </motion.div>
+      </div>
       <p className="text-muted-foreground leading-relaxed">
         {card.content}
       </p>
@@ -92,16 +135,90 @@ const AppreciationCard = ({ card, index }: { card: GratitudeCard; index: number 
 };
 
 const GratitudeSection = () => {
+  const containerRef = useRef(null);
   const headerRef = useRef(null);
   const quoteRef = useRef(null);
   const closingRef = useRef(null);
+
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-50px" });
   const isQuoteInView = useInView(quoteRef, { once: true, margin: "-50px" });
-  const isClosingInView = useInView(closingRef, { once: true, margin: "-50px" });
+  const isClosingInView = useInView(closingRef, { once: true, margin: "-100px" });
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden gradient-blush-lavender">
+    <section
+      ref={containerRef}
+      className="py-24 md:py-32 relative overflow-hidden gradient-blush-lavender"
+    >
       <FloatingPetals />
+
+      {/* Magical Sticker Gallery */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Sticker 1 */}
+        <motion.div
+          style={{ y: y1 }}
+          animate={{ rotate: [-2, 2, -2] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-[2%] md:left-[8%] top-[10%] md:top-[15%] w-32 md:w-48 lg:w-64 z-0 hidden md:block"
+        >
+          <div className="relative group">
+            <div className="bg-white p-1 md:p-2 pb-4 md:pb-8 shadow-[0_10px_20px_rgba(0,0,0,0.1)] rounded-sm border-[4px] md:border-[6px] border-white -rotate-3 group-hover:rotate-0 transition-transform duration-500">
+              <img src={photo1} alt="Cute" className="w-full h-full object-cover filter saturate-110" />
+              <div className="absolute -top-4 -right-4 md:block hidden"><Sparkle /></div>
+            </div>
+            <div className="absolute -bottom-2 -left-2 md:block hidden"><Sparkle delay={1} /></div>
+          </div>
+        </motion.div>
+
+        {/* Sticker 2 */}
+        <motion.div
+          style={{ y: y2 }}
+          animate={{ rotate: [3, -3, 3] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute right-[2%] md:right-[10%] top-[20%] md:top-[25%] w-28 md:w-40 lg:w-56 z-0 hidden md:block"
+        >
+          <div className="relative group">
+            <div className="bg-white p-1 md:p-2 pb-4 md:pb-8 shadow-[0_10px_20px_rgba(0,0,0,0.1)] rounded-sm border-[4px] md:border-[6px] border-white rotate-6 group-hover:rotate-2 transition-transform duration-500">
+              <img src={photo2} alt="Cute" className="w-full h-full object-cover filter saturate-110" />
+              <div className="absolute top-1/2 -left-6 md:block hidden"><Sparkle delay={0.5} /></div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Sticker 3 - hidden on mobile, shown from lg */}
+        <motion.div
+          style={{ y: y3 }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-[5%] md:left-[12%] bottom-[10%] md:bottom-[15%] w-40 md:w-56 lg:w-72 z-0 hidden lg:block"
+        >
+          <div className="relative group">
+            <div className="bg-white p-1 md:p-2 pb-4 md:pb-8 shadow-[0_15px_30px_rgba(0,0,0,0.15)] rounded-sm border-[4px] md:border-[8px] border-white rotate-[-2deg] group-hover:scale-105 transition-all duration-500">
+              <img src={photo3} alt="Cute" className="w-full h-full object-cover filter saturate-110" />
+              <div className="absolute -bottom-4 right-1/4 md:block hidden"><Sparkle delay={1.5} /></div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Mobile-only Sticker */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          className="md:hidden absolute -right-4 top-[5%] w-32 z-0 opacity-40 rotate-12"
+        >
+          <div className="bg-white p-1 pb-4 shadow-lg border-[4px] border-white">
+            <img src={photo1} alt="Cute" className="w-full h-24 object-cover" />
+          </div>
+        </motion.div>
+      </div>
 
       <div className="prose-romantic relative z-10">
         <motion.div
