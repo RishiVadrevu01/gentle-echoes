@@ -39,15 +39,15 @@ const gratitudes: GratitudeCard[] = [
   },
   {
     title: "Your Strength",
-    content: "Watching you handle difficult moments with grace showed me what real courage looks like."
+    content: "You are my strength and my guide whenever I feel lost, I run to you, knowing I’ll always find comfort and peace in you."
   },
   {
-    title: "Your Kindness",
-    content: "You made space for people in ways I'm still learning to do. Generosity came naturally to you."
+    title: "Your Love",
+    content: "I am the most luckiest person in the world to have you in my life.YOU a bit harsh but i love it "
   },
   {
-    title: "Your Curiosity",
-    content: "The questions you asked, the wonder you held—you made the ordinary feel extraordinary."
+    title: "Your Cuteness",
+    content: "Your smile is my favorite place, and your laugh is my favorite sound. In a world full of beautiful things 💕"
   },
   {
     title: "Your Patience",

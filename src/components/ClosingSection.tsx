@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Mail, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import firstImg from "@/assets/first.jpeg";
 
@@ -112,11 +112,14 @@ const ClosingSection = () => {
               what I learned, and what you meant to me.
             </p>
             <p>
-              Your feelings are your own.
+              I Love you for every and every
               <br />
               Your choice is yours to make.
               <br />
               <span className="text-foreground">And whatever that choice is, I respect it.</span>
+              <br />
+              <span className="text-foreground">BUT CHOOSE ME FOR THE ONE LAST TIME
+                <br />.</span>
             </p>
           </div>
         </motion.div>
@@ -135,18 +138,21 @@ const ClosingSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-8"
         >
-          <p className="font-script text-2xl md:text-3xl text-foreground">
-            ~ With love and respect, always
+          <p className="font-script text-2xl md:text-4xl text-foreground">
+            ~ please forgive me ❤️
           </p>
+          <p className="font-script text-2xl md:text-4xl text-foreground">
+            ~ Will you be my valentine ❤️
+          </p>
+
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
             <Button
               variant="romantic"
               size="lg"
               className="group"
-              onClick={() => window.location.href = 'mailto:?subject=My%20Thoughts'}
             >
-              <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+              <Heart className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform fill-current" />
               Yes
             </Button>
 

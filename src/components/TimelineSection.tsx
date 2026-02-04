@@ -17,42 +17,41 @@ interface Memory {
 
 const memories: Memory[] = [
   {
-    season: "Spring 2023",
+    season: "Collage 2022",
     icon: "🌸",
     title: "The First Conversation",
-    description: "You laughed at something I said—not because it was particularly funny, but because you were generous with your joy. I remember thinking how rare that was.",
-    emotionalNote: "That's when I started paying attention.",
+    description: "I never knew that one day you would become my whole world. Every man wishes for his life partner to be his best friend, but God gifted me something even more beautiful — you became my best friend first, and then my world.",
+    emotionalNote: "I still remember those moments… blushing from afar just by seeing you, while you had no idea. The rush to talk to you, the excitement to see you, and the quiet dream of spending my entire life with you — it has all been you, always you. ❤️",
     image: hugImg
   },
   {
-    season: "Summer 2023",
+    season: " Finally you are mine",
     icon: "☀️",
-    title: "The Long Walk",
-    description: "We walked for hours without noticing time. The city felt different with you—smaller, kinder, more beautiful. Every street corner held a conversation waiting to happen.",
-    emotionalNote: "I learned that home isn't a place.",
+    title: "LOVE",
+    description: "The moment I decided you were my world, I promised myself I would give you everything I have, and everything I am. I love the way you scold me, the way you guide me, and the gentle way you care for me — every little thing about you makes my heart feel at home.",
+    emotionalNote: "The fear of losing you, or wondering if I could truly take care of you, sometimes weighs on my heart. But the moment I see you, every fear fades away. In your presence, all I feel is love — and a quiet promise within me that I would do anything, everything, just to see you happy. ❤️",
     image: lake2Img
   },
   {
     season: "Autumn 2023",
     icon: "🍂",
     title: "The Quiet Moment",
-    description: "We sat in comfortable silence, and I realized I didn't need to fill every gap with words. Being present with you was enough. More than enough.",
-    emotionalNote: "Silence became a language.",
+    description: " I still remember praying, hoping that somehow you would step into my life, dreaming of a future with you even before you were mine. And then came that cold winter night, as we were crossing the road… when you proposed. In that moment, not even the richest person alive could have felt as happy as I did",
+    emotionalNote: "Your voice echoing, “She is mine,” still plays in my heart — it froze time for me. All I knew in that second was that I belonged to you, and you belonged to me.",
     image: kissImg
   },
   {
     season: "Winter 2024",
     icon: "❄️",
     title: "The Difficult Truth",
-    description: "Things got harder. We stumbled. I made mistakes I'm still learning from. But even in the struggle, I saw your strength—and my own need to grow.",
-    emotionalNote: "Love doesn't mean perfection.",
+    description: " Your happiness became my happiness, until I realized that in this entire world, it was your presence alone that truly mattered to me. I started dreaming of a lifetime with you — a loving home, children’s laughter, your cat with my dog, our little fights, our deep love… everything about “us” felt beautifully real.\n\nI know I made mistakes, even after the chances you gave me that I didn’t deserve. But every dream I ever saw with you was honest, loyal, and pure. I cried for that dream, fought for it, and held it close to my heart — yet one flaw of mine slowly broke what I was trying so hard to build. ",
+    emotionalNote: "every mistake carries a lesson, and the fear of losing you has changed me. It has given me a new heart, a new mindset, and a stronger understanding of love. I want to rebuild what I broke — and this time, not just my dream, but the person I am will be more loyal, more patient, and more worthy of you.So I ask you, from the deepest place in my heart… give me one more chance. Let me prove that our love is stronger than my past, and that I can become the safe, forever kind of love you deserve..",
     image: funnyImg
   },
 ];
 
 const TimelineCard = ({ memory, index }: { memory: Memory; index: number }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const isEven = index % 2 === 0;
 
   return (
@@ -70,13 +69,13 @@ const TimelineCard = ({ memory, index }: { memory: Memory; index: number }) => {
       </div>
 
       {/* Image container */}
-      <div className={`w-full md:w-1/2 flex items-center ${isEven ? 'md:justify-end md:pr-8' : 'md:justify-start md:pl-8'} justify-center px-4`}>
+      <div className={`w-full md:w-1/2 flex items-center ${isEven ? 'md:justify-end md:pr-12' : 'md:justify-start md:pl-12'} justify-center px-4`}>
         {memory.image && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="w-full max-w-[300px] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl"
+            className="w-full max-w-[450px] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl"
           >
             <img
               src={memory.image}
@@ -88,23 +87,23 @@ const TimelineCard = ({ memory, index }: { memory: Memory; index: number }) => {
       </div>
 
       {/* Card container */}
-      <div className={`w-full md:w-1/2 flex items-center ${isEven ? 'md:justify-start md:pl-8' : 'md:justify-end md:pr-8'} justify-center px-4`}>
-        <div className="w-full max-w-[400px] bg-white p-8 md:p-10 rounded-[2rem] shadow-xl border border-border/5">
+      <div className={`w-full md:w-1/2 flex items-center ${isEven ? 'md:justify-start md:pl-12' : 'md:justify-end md:pr-12'} justify-center px-4`}>
+        <div className="w-full max-w-[600px] bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-border/10">
           <div className="flex items-center gap-2 mb-6">
             <span className="text-2xl">{memory.icon}</span>
             <span className="font-script text-2xl text-gold/80">{memory.season}</span>
           </div>
 
-          <h3 className="font-serif text-3xl md:text-4xl text-foreground mb-6 leading-tight">
+          <h3 className="font-serif text-3xl md:text-5xl text-foreground mb-6 leading-tight">
             "{memory.title}"
           </h3>
 
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+          <p className="text-xl text-muted-foreground leading-relaxed mb-8 whitespace-pre-line">
             {memory.description}
           </p>
 
           <div className="border-l-2 border-gold/30 pl-6">
-            <p className="text-foreground/70 italic font-serif text-lg">
+            <p className="text-foreground/70 italic font-serif text-xl">
               → {memory.emotionalNote}
             </p>
           </div>

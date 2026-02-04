@@ -17,23 +17,23 @@ interface Reflection {
 const reflections: Reflection[] = [
   {
     icon: MessageCircle,
-    title: "Where I Failed to Communicate",
-    content: "I held back when I should have spoken up. I assumed you understood what I felt, when I should have told you. Silence isn't always peace—sometimes it's distance I created without meaning to."
+    title: "Where I Failed",
+    content: "I failed myself by not controlling my mindset and by not honoring the responsibilities I should have carried as your boyfriend. I treated things too casually, without realizing how serious they truly were — until reality showed me the consequences of my actions."
   },
   {
     icon: Sprout,
-    title: "Patterns I'm Working to Change",
-    content: "I've noticed my tendency to retreat when things get hard. To protect myself in ways that left you feeling alone. I'm learning that vulnerability isn't weakness—it's the only path to real connection."
+    title: "What really matters ",
+    content: "Now that I’ve lost your trust, nothing in this world feels more important than earning it back. I am ready to go to any extent to rebuild what I broke — to change my habits, to change my world, to become a better man — because you truly matter to me more than anything"
   },
   {
     icon: Handshake,
-    title: "What I Should Have Done Differently",
-    content: "I should have asked more questions. Listened more deeply. Made you feel as important as you truly were to me. Your feelings deserved more space than I gave them."
+    title: "A Promise of Love",
+    content: "I promise to be loyal — not just in words, but in every action, and I will rebuild your trust with my actions, not just my words. I will become the person you always wanted me to be — not as a sacrifice, but because my love for you is real, and you are worth every change. ❤️"
   },
   {
     icon: Sparkles,
-    title: "Who I'm Becoming",
-    content: "Someone who shows up, even when it's uncomfortable. Someone who values honesty over comfort. Someone who understands that love is a verb—it requires action, not just feeling."
+    title: "❤️ One Last Chance",
+    content: "I know I don’t deserve it, but I’m asking you for one last chance. Let me prove my love through my actions, rebuild the trust I broke, and become the person you deserve. Please don’t give up on us — you mean everything to me. ❤️"
   }
 ];
 
@@ -200,10 +200,10 @@ const ReflectionSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center mt-16"
         >
-          <p className="font-serif text-xl md:text-2xl text-foreground/80 italic max-w-lg mx-auto">
-            "You deserved better.
+          <p className="font-serif text-xl md:text-2xl text-foreground font-bold italic max-w-lg mx-auto">
+            "“Even if I had a thousand lives, I would search every world just to find you again — because loving you is not just what my heart does, it is the reason it beats.” ❤️
             <br />
-            I'm learning to be better."
+            You deserved better, I'm learning to be better."
           </p>
         </motion.div>
       </div>
