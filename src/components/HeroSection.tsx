@@ -4,6 +4,7 @@ import heroBg from "@/assets/vibha-photo .jpeg";
 import lakeView from "@/assets/lake-view.jpeg";
 import collageLake from "@/assets/collage-lake.jpeg";
 import Butterfly from "./Butterfly";
+import RosePetalParticles from "./RosePetalParticles";
 
 const HeroSection = () => {
   const scrollToNext = () => {
@@ -13,6 +14,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-start pt-16 md:pt-24 gradient-cream-blush watercolor-overlay overflow-hidden">
+      <RosePetalParticles />
       {/* Side Background Images (keeping them absolute but less intrusive) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* collage-lake placed specifically to the left area - hidden on mobile, shown from md up */}

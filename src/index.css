@@ -12,13 +12,13 @@
     --cream: 30 33% 98%;
     --blush: 15 38% 93%;
     --dusty-rose: 15 23% 87%;
-    
+
     /* Accent colors */
     --lavender: 285 18% 81%;
     --taupe: 30 15% 72%;
     --peach: 20 60% 90%;
     --gold: 35 45% 68%;
-    
+
     /* Semantic tokens */
     --card: 30 33% 99%;
     --card-foreground: 0 0% 23%;
@@ -65,7 +65,7 @@
     --cream: 0 0% 12%;
     --blush: 15 20% 18%;
     --dusty-rose: 15 15% 25%;
-    
+
     --lavender: 285 15% 35%;
     --taupe: 30 10% 45%;
     --peach: 20 30% 25%;
@@ -112,7 +112,12 @@
     letter-spacing: 0.01em;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-serif);
     font-weight: 400;
     line-height: 1.3;
@@ -138,19 +143,15 @@
   }
 
   .gradient-cream-blush {
-    background: linear-gradient(
-      180deg,
-      hsl(var(--cream)) 0%,
-      hsl(var(--blush)) 100%
-    );
+    background: linear-gradient(180deg,
+        hsl(var(--cream)) 0%,
+        hsl(var(--blush)) 100%);
   }
 
   .gradient-blush-lavender {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--blush)) 0%,
-      hsl(var(--lavender) / 0.5) 100%
-    );
+    background: linear-gradient(135deg,
+        hsl(var(--blush)) 0%,
+        hsl(var(--lavender) / 0.5) 100%);
   }
 
   .watercolor-overlay {
@@ -161,16 +162,12 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      ellipse at 30% 20%,
-      hsl(var(--peach) / 0.3) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 70% 80%,
-      hsl(var(--lavender) / 0.2) 0%,
-      transparent 50%
-    );
+    background: radial-gradient(ellipse at 30% 20%,
+        hsl(var(--peach) / 0.3) 0%,
+        transparent 50%),
+      radial-gradient(ellipse at 70% 80%,
+        hsl(var(--lavender) / 0.2) 0%,
+        transparent 50%);
     pointer-events: none;
   }
 
@@ -191,11 +188,9 @@
 
   .timeline-dot {
     @apply w-4 h-4 rounded-full;
-    background: linear-gradient(
-      135deg,
-      hsl(var(--dusty-rose)) 0%,
-      hsl(var(--lavender)) 100%
-    );
+    background: linear-gradient(135deg,
+        hsl(var(--dusty-rose)) 0%,
+        hsl(var(--lavender)) 100%);
     box-shadow: 0 0 0 4px hsl(var(--cream)), 0 0 0 5px hsl(var(--dusty-rose) / 0.3);
   }
 
@@ -205,12 +200,10 @@
 
   .section-divider {
     @apply w-16 h-px mx-auto my-16;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(var(--gold) / 0.5) 50%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg,
+        transparent 0%,
+        hsl(var(--gold) / 0.5) 50%,
+        transparent 100%);
   }
 }
 
@@ -228,6 +221,7 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -235,17 +229,51 @@
   }
 
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-10px);
     }
   }
 
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
-  .delay-500 { animation-delay: 500ms; }
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--dusty-rose) / 0.3);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--dusty-rose) / 0.5);
+  }
 }

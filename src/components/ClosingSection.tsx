@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import firstImg from "@/assets/first.jpeg";
+import PromisePopup from "./PromisePopup";
 
 declare global {
   interface Window {
@@ -51,6 +52,40 @@ const ClosingSection = () => {
       if (vantaEffect) vantaEffect.destroy();
     };
   }, [vantaEffect]);
+
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [showPromise, setShowPromise] = useState(false);
+
+  const handleYesClick = async () => {
+    setStatus("sending");
+    try {
+      const response = await fetch("https://formspree.io/f/mbdaragj", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          message: "She said YES! ❤️",
+          timestamp: new Date().toLocaleString(),
+          subject: "She said YES! ❤️"
+        })
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setShowPromise(true);
+      } else {
+        setStatus("error");
+        // Still show promise popup even if email fails, for user experience
+        setShowPromise(true);
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setStatus("error");
+      setShowPromise(true);
+    }
+  };
 
   const handleNoHover = () => {
     // Detect mobile for smaller movement range
@@ -150,10 +185,19 @@ const ClosingSection = () => {
             <Button
               variant="romantic"
               size="lg"
-              className="group"
+              className="group min-w-[140px]"
+              onClick={handleYesClick}
+              disabled={status === "sending" || status === "success"}
             >
-              <Heart className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform fill-current" />
-              Yes
+              {status === "idle" && (
+                <>
+                  <Heart className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform fill-current" />
+                  Yes
+                </>
+              )}
+              {status === "sending" && "Sending... ❤️"}
+              {status === "success" && "Sent! ❤️"}
+              {status === "error" && "Try Again ❤️"}
             </Button>
 
             <motion.div
@@ -186,6 +230,11 @@ const ClosingSection = () => {
           </p>
         </motion.footer>
       </div>
+
+      <PromisePopup
+        isOpen={showPromise}
+        onClose={() => setShowPromise(false)}
+      />
     </section>
   );
 };

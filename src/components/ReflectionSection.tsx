@@ -7,6 +7,8 @@ import cute from "@/assets/cute .jpeg";
 import sight from "@/assets/sight.jpeg";
 import star from "@/assets/star.jpeg";
 import sweater from "@/assets/sweater .jpeg";
+import metro2 from "@/assets/metro2.jpeg";
+import vibha2 from "@/assets/vibha2.jpeg";
 
 interface Reflection {
   icon: React.ElementType;
@@ -171,6 +173,42 @@ const ReflectionSection = () => {
                 className="w-56 h-40 object-cover filter saturate-110 contrast-110"
               />
               <p className="font-script text-gold text-center mt-4 text-xl">Looking back</p>
+            </div>
+          </motion.div>
+
+          {/* Polaroid 5 - Custom Addition (Metro) */}
+          <motion.div
+            initial={{ opacity: 0, rotate: 15, x: 50 }}
+            whileInView={{ opacity: 1, rotate: 10, x: 30 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 1 }}
+            className="hidden lg:block absolute -right-40 xl:-right-80 bottom-[-16rem] z-0"
+          >
+            <div className="bg-white p-3 pb-10 shadow-xl border border-border/10 rotate-[10deg] hover:rotate-0 transition-transform duration-500">
+              <img
+                src={metro2}
+                alt="Metro"
+                className="w-40 xl:w-56 h-48 xl:h-64 object-cover filter saturate-110"
+              />
+              <p className="font-script text-gold text-center mt-3 text-lg">Moments in motion</p>
+            </div>
+          </motion.div>
+
+          {/* Polaroid 6 - Custom Addition (Vibha) */}
+          <motion.div
+            initial={{ opacity: 0, rotate: -10, y: 50 }}
+            whileInView={{ opacity: 1, rotate: -5, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="hidden xl:block absolute -left-40 xl:-left-80 bottom-[-8rem] z-0"
+          >
+            <div className="bg-white p-3 pb-10 shadow-xl border border-border/10 rotate-[-5deg] hover:rotate-0 transition-transform duration-500">
+              <img
+                src={vibha2}
+                alt="Vibha"
+                className="w-48 h-60 object-cover filter saturate-110"
+              />
+              <p className="font-script text-gold text-center mt-3 text-lg">Your light</p>
             </div>
           </motion.div>
 

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import hugImg from "@/assets/hug.jpeg";
+import handImg from "@/assets/hand.jpeg";
 import lake2Img from "@/assets/lake2.jpeg";
 import kissImg from "@/assets/kiss.jpeg";
 import funnyImg from "@/assets/funny.jpeg";
@@ -22,7 +22,7 @@ const memories: Memory[] = [
     title: "The First Conversation",
     description: "I never knew that one day you would become my whole world. Every man wishes for his life partner to be his best friend, but God gifted me something even more beautiful — you became my best friend first, and then my world.",
     emotionalNote: "I still remember those moments… blushing from afar just by seeing you, while you had no idea. The rush to talk to you, the excitement to see you, and the quiet dream of spending my entire life with you — it has all been you, always you. ❤️",
-    image: hugImg
+    image: handImg
   },
   {
     season: " Finally you are mine",
@@ -33,7 +33,7 @@ const memories: Memory[] = [
     image: lake2Img
   },
   {
-    season: "Autumn 2023",
+    season: "Hope",
     icon: "🍂",
     title: "The Quiet Moment",
     description: " I still remember praying, hoping that somehow you would step into my life, dreaming of a future with you even before you were mine. And then came that cold winter night, as we were crossing the road… when you proposed. In that moment, not even the richest person alive could have felt as happy as I did",
@@ -41,7 +41,7 @@ const memories: Memory[] = [
     image: kissImg
   },
   {
-    season: "Winter 2024",
+    season: "Trust",
     icon: "❄️",
     title: "The Difficult Truth",
     description: " Your happiness became my happiness, until I realized that in this entire world, it was your presence alone that truly mattered to me. I started dreaming of a lifetime with you — a loving home, children’s laughter, your cat with my dog, our little fights, our deep love… everything about “us” felt beautifully real.\n\nI know I made mistakes, even after the chances you gave me that I didn’t deserve. But every dream I ever saw with you was honest, loyal, and pure. I cried for that dream, fought for it, and held it close to my heart — yet one flaw of mine slowly broke what I was trying so hard to build. ",

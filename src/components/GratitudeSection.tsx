@@ -1,9 +1,10 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import photo1 from "@/assets/vibha-photo .jpeg";
-import photo2 from "@/assets/lake-view.jpeg";
-import photo3 from "@/assets/hug.jpeg";
+import photo1 from "@/assets/metroo.jpeg";
+import photo2 from "@/assets/collaeg.jpeg";
+import photo3 from "@/assets/charminar .jpeg";
+import photo4 from "@/assets/cuteee.jpeg";
 
 const Sparkle = ({ delay = 0 }: { delay?: number }) => (
   <motion.div
@@ -167,11 +168,11 @@ const GratitudeSection = () => {
           style={{ y: y1 }}
           animate={{ rotate: [-2, 2, -2] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[2%] md:left-[8%] top-[10%] md:top-[15%] w-32 md:w-48 lg:w-64 z-0 hidden md:block"
+          className="absolute left-[2%] md:left-[5%] top-[10%] md:top-[15%] w-48 md:w-72 lg:w-96 z-0 hidden md:block"
         >
           <div className="relative group">
             <div className="bg-white p-1 md:p-2 pb-4 md:pb-8 shadow-[0_10px_20px_rgba(0,0,0,0.1)] rounded-sm border-[4px] md:border-[6px] border-white -rotate-3 group-hover:rotate-0 transition-transform duration-500">
-              <img src={photo1} alt="Cute" className="w-full h-full object-cover filter saturate-110" />
+              <img src={photo1} alt="Cute" className="w-full h-auto object-cover filter saturate-110" />
               <div className="absolute -top-4 -right-4 md:block hidden"><Sparkle /></div>
             </div>
             <div className="absolute -bottom-2 -left-2 md:block hidden"><Sparkle delay={1} /></div>
@@ -183,7 +184,7 @@ const GratitudeSection = () => {
           style={{ y: y2 }}
           animate={{ rotate: [3, -3, 3] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-[2%] md:right-[10%] top-[20%] md:top-[25%] w-28 md:w-40 lg:w-56 z-0 hidden md:block"
+          className="absolute right-[2%] md:right-[10%] top-[20%] md:top-[25%] w-20 md:w-32 lg:w-44 z-0 hidden md:block"
         >
           <div className="relative group">
             <div className="bg-white p-1 md:p-2 pb-4 md:pb-8 shadow-[0_10px_20px_rgba(0,0,0,0.1)] rounded-sm border-[4px] md:border-[6px] border-white rotate-6 group-hover:rotate-2 transition-transform duration-500">
@@ -195,15 +196,28 @@ const GratitudeSection = () => {
 
         {/* Sticker 3 - hidden on mobile, shown from lg */}
         <motion.div
-          style={{ y: y3 }}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[5%] md:left-[12%] bottom-[10%] md:bottom-[15%] w-40 md:w-56 lg:w-72 z-0 hidden lg:block"
+          animate={{ rotate: [-1.5, 1.5, -1.5] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-[5%] md:left-[12%] bottom-[25%] md:bottom-[35%] w-32 md:w-48 lg:w-60 z-0 hidden lg:block"
         >
           <div className="relative group">
             <div className="bg-white p-1 md:p-2 pb-4 md:pb-8 shadow-[0_15px_30px_rgba(0,0,0,0.15)] rounded-sm border-[4px] md:border-[8px] border-white rotate-[-2deg] group-hover:scale-105 transition-all duration-500">
-              <img src={photo3} alt="Cute" className="w-full h-full object-cover filter saturate-110" />
+              <img src={photo3} alt="Cute" className="w-full aspect-[4/5] object-cover object-bottom filter saturate-110" />
               <div className="absolute -bottom-4 right-1/4 md:block hidden"><Sparkle delay={1.5} /></div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Sticker 4 - Landscape photo (cuteee.jpeg) */}
+        <motion.div
+          animate={{ rotate: [1, -1, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute right-[5%] bottom-[15%] md:bottom-[22%] w-40 md:w-64 lg:w-80 z-0 hidden md:block"
+        >
+          <div className="relative group">
+            <div className="bg-white p-2 pb-6 md:p-3 md:pb-10 shadow-[0_12px_24px_rgba(0,0,0,0.12)] rounded-sm border-[4px] md:border-[6px] border-white rotate-2 group-hover:rotate-0 transition-all duration-500">
+              <img src={photo4} alt="Precious Moment" className="w-full h-auto object-cover filter saturate-110" />
+              <div className="absolute -top-3 -left-3 md:block hidden"><Sparkle delay={0.8} /></div>
             </div>
           </div>
         </motion.div>
@@ -215,7 +229,7 @@ const GratitudeSection = () => {
           className="md:hidden absolute -right-4 top-[5%] w-32 z-0 opacity-40 rotate-12"
         >
           <div className="bg-white p-1 pb-4 shadow-lg border-[4px] border-white">
-            <img src={photo1} alt="Cute" className="w-full h-24 object-cover" />
+            <img src={photo1} alt="Cute" className="w-full aspect-[3/2] object-cover" />
           </div>
         </motion.div>
       </div>
