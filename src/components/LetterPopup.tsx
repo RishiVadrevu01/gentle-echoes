@@ -84,7 +84,7 @@ const LetterPopup = ({ onClose }: LetterPopupProps) => {
                                         transition={{ delay: 0.5 }}
                                         className="font-script text-5xl text-rose-500 mb-8 not-italic text-left pb-4"
                                     >
-                                        Hey Snupyyyy,
+                                        Hey Snupyyyy💖,
                                     </motion.p>
 
                                     {/* First para with Shinchan Image beside it */}
