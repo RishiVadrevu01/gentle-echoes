@@ -22,8 +22,8 @@ const PageTracker = () => {
     //    - Template variables to use: {{visitor_name}}, {{time}}, {{url}}
     // 4. Go to Account > API Keys. Get the 'Public Key'.
 
-    const SERVICE_ID = "service_hnff0ar";   // e.g. "service_x820..."
-    const TEMPLATE_ID = "template_mrbr945";
+    const SERVICE_ID = "service_1vth25g";   // e.g. "service_x820..."
+    const TEMPLATE_ID = "template_6ycy0px";
     const PUBLIC_KEY = "k1-eZ7GdVyRGsIxJC";   // e.g. "user_..."
 
     // Checking for specific person via URL param, e.g. gentle-echoes/?for=HerName
