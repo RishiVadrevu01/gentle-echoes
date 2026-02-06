@@ -9,6 +9,8 @@ import star from "@/assets/star.jpeg";
 import sweater from "@/assets/sweater .jpeg";
 import metro2 from "@/assets/metro2.jpeg";
 import vibha2 from "@/assets/vibha2.jpeg";
+import Snowfall from "./Snowfall";
+import Butterfly from "./Butterfly";
 
 interface Reflection {
   icon: React.ElementType;
@@ -57,7 +59,7 @@ const ReflectionCard = ({ reflection, index }: { reflection: Reflection; index: 
           <Icon className="w-5 h-5 text-foreground/70" />
         </div>
         <div>
-          <h3 className="font-serif text-xl md:text-2xl text-foreground mb-3">
+          <h3 className="text-xl md:text-2xl text-foreground mb-3">
             {reflection.title}
           </h3>
           <p className="text-muted-foreground leading-relaxed">
@@ -84,7 +86,64 @@ const ReflectionSection = () => {
         }}
       />
 
-      <div className="prose-romantic relative z-10">
+      {/* Snowfall Effect */}
+      <Snowfall />
+
+      {/* Flying Butterflies */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+        <motion.div
+          className="absolute top-[15%] -left-20"
+          animate={{
+            x: ["-10vw", "100vw"],
+            y: [0, -40, 0, 20],
+          }}
+          style={{ rotate: 90 }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            delay: 0,
+            ease: "linear",
+          }}
+        >
+          <Butterfly className="w-20 h-20" />
+        </motion.div>
+
+        <motion.div
+          className="absolute top-[45%] -right-20"
+          animate={{
+            x: ["10vw", "-100vw"],
+            y: [0, 60, 0, -30],
+          }}
+          style={{ rotate: -90 }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            delay: 5,
+            ease: "linear",
+          }}
+        >
+          <Butterfly className="w-16 h-16" />
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-[20%] -left-20"
+          animate={{
+            x: ["-10vw", "100vw"],
+            y: [0, -30, 0, 30],
+          }}
+          style={{ rotate: 90 }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            delay: 12,
+            ease: "linear",
+          }}
+        >
+          <Butterfly className="w-14 h-14" />
+        </motion.div>
+      </div>
+
+      <div className="prose-romantic relative z-10" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
@@ -92,8 +151,8 @@ const ReflectionSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="font-script text-gold text-2xl">Chapter Two</span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mt-4">
+          <span className="font-script text-gold text-2xl" style={{ fontFamily: '' }}>Chapter Two</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-foreground mt-4">
             What I've Learned About Myself
           </h2>
           <p className="text-muted-foreground mt-6 max-w-lg mx-auto text-lg leading-relaxed">
@@ -118,7 +177,7 @@ const ReflectionSection = () => {
                 alt="Star"
                 className="w-32 xl:w-48 h-40 xl:h-56 object-cover filter saturate-110"
               />
-              <p className="font-script text-gold text-center mt-2 text-lg">The brightest</p>
+              <p className="font-script text-gold text-center mt-2 text-lg" style={{ fontFamily: '' }}>The brightest</p>
             </div>
           </motion.div>
 
@@ -136,7 +195,7 @@ const ReflectionSection = () => {
                 alt="Cute"
                 className="w-32 xl:w-44 h-32 xl:h-44 object-cover filter saturate-125 brightness-105"
               />
-              <p className="font-script text-gold text-center mt-2 text-lg">Pure joy</p>
+              <p className="font-script text-gold text-center mt-2 text-lg" style={{ fontFamily: '' }}>Pure joy</p>
             </div>
           </motion.div>
 
@@ -154,7 +213,7 @@ const ReflectionSection = () => {
                 alt="Sweater"
                 className="w-52 h-64 object-cover filter saturate-115"
               />
-              <p className="font-script text-gold text-center mt-4 text-xl">Warmth</p>
+              <p className="font-script text-gold text-center mt-4 text-xl" style={{ fontFamily: '' }}>Warmth</p>
             </div>
           </motion.div>
 
@@ -172,7 +231,7 @@ const ReflectionSection = () => {
                 alt="Sight"
                 className="w-56 h-40 object-cover filter saturate-110 contrast-110"
               />
-              <p className="font-script text-gold text-center mt-4 text-xl">Looking back</p>
+              <p className="font-script text-gold text-center mt-4 text-xl" style={{ fontFamily: '' }}>Looking back</p>
             </div>
           </motion.div>
 
@@ -190,7 +249,7 @@ const ReflectionSection = () => {
                 alt="Metro"
                 className="w-40 xl:w-56 h-48 xl:h-64 object-cover filter saturate-110"
               />
-              <p className="font-script text-gold text-center mt-3 text-lg">Moments in motion</p>
+              <p className="font-script text-gold text-center mt-3 text-lg" style={{ fontFamily: '' }}>Moments in motion</p>
             </div>
           </motion.div>
 
@@ -208,7 +267,7 @@ const ReflectionSection = () => {
                 alt="Vibha"
                 className="w-48 h-60 object-cover filter saturate-110"
               />
-              <p className="font-script text-gold text-center mt-3 text-lg">Your light</p>
+              <p className="font-script text-gold text-center mt-3 text-lg" style={{ fontFamily: '' }}>Your light</p>
             </div>
           </motion.div>
 
@@ -220,7 +279,7 @@ const ReflectionSection = () => {
               className="bg-white p-2 pb-6 shadow-lg border border-border/5 rotate-2 max-w-[200px]"
             >
               <img src={star} alt="Star" className="w-full h-40 object-cover" />
-              <p className="font-script text-gold text-center mt-2">Reflection</p>
+              <p className="font-script text-gold text-center mt-2" style={{ fontFamily: '' }}>Reflection</p>
             </motion.div>
           </div>
 
@@ -238,7 +297,7 @@ const ReflectionSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center mt-16"
         >
-          <p className="font-serif text-xl md:text-2xl text-foreground font-bold italic max-w-lg mx-auto">
+          <p className="font-serif text-xl md:text-2xl text-foreground font-bold italic max-w-lg mx-auto" style={{ fontFamily: '' }}>
             "“Even if I had a thousand lives, I would search every world just to find you again — because loving you is not just what my heart does, it is the reason it beats.” ❤️
             <br />
             You deserved better, I'm learning to be better."

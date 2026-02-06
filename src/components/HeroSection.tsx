@@ -55,7 +55,7 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center">
+      <div className="max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -63,8 +63,8 @@ const HeroSection = () => {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-8"
         >
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
-            <span className="block italic text-gold mb-2 font-script text-3xl md:text-5xl text-opacity-100">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
+            <span className="block italic text-gold mb-2 font-script text-3xl md:text-5xl text-opacity-100" style={{ fontFamily: '' }}>
               Snupyyyy
             </span>
             <span className="block">
@@ -104,7 +104,7 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center max-w-2xl px-4"
         >
-          <p className="text-lg md:text-xl text-foreground font-serif leading-relaxed italic">
+          <p className="text-lg md:text-xl text-foreground font-serif leading-relaxed italic" style={{ fontFamily: '' }}>
             "You are the most beautiful girl I've ever seen in my world, and the most special person in my life."
           </p>
 
@@ -135,6 +135,7 @@ const HeroSection = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.5 }}
         aria-label="Scroll to continue"
+        style={{ fontFamily: '"Times New Roman", Times, serif' }}
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

@@ -75,7 +75,7 @@ const TimelineCard = ({ memory, index }: { memory: Memory; index: number }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="w-full max-w-[450px] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl"
+            className={`w-full ${memory.image === funnyImg ? 'max-w-[450px]' : 'max-w-[350px]'} aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl`}
           >
             <img
               src={memory.image}
@@ -91,10 +91,10 @@ const TimelineCard = ({ memory, index }: { memory: Memory; index: number }) => {
         <div className="w-full max-w-[600px] bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-border/10">
           <div className="flex items-center gap-2 mb-6">
             <span className="text-2xl">{memory.icon}</span>
-            <span className="font-script text-2xl text-gold/80">{memory.season}</span>
+            <span className="font-script text-2xl text-gold/80" style={{ fontFamily: '' }}>{memory.season}</span>
           </div>
 
-          <h3 className="font-serif text-3xl md:text-5xl text-foreground mb-6 leading-tight">
+          <h3 className="text-3xl md:text-5xl text-foreground mb-6 leading-tight">
             "{memory.title}"
           </h3>
 
@@ -103,7 +103,7 @@ const TimelineCard = ({ memory, index }: { memory: Memory; index: number }) => {
           </p>
 
           <div className="border-l-2 border-gold/30 pl-6">
-            <p className="text-foreground/70 italic font-serif text-xl">
+            <p className="text-foreground/70 italic font-serif text-xl" style={{ fontFamily: '' }}>
               → {memory.emotionalNote}
             </p>
           </div>
@@ -159,7 +159,7 @@ const TimelineSection = () => {
       {/* Subtle background overlay */}
       <div className="absolute inset-0 bg-white/20 pointer-events-none z-[1]" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
@@ -167,8 +167,8 @@ const TimelineSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-32"
         >
-          <span className="font-script text-gold text-3xl">Chapter One</span>
-          <h2 className="font-serif text-4xl md:text-6xl text-foreground mt-4 mb-6">
+          <span className="font-script text-gold text-3xl" style={{ fontFamily: '' }}>Chapter One</span>
+          <h2 className="text-4xl md:text-6xl text-foreground mt-4 mb-6">
             Our Journey
           </h2>
           <p className="text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed">

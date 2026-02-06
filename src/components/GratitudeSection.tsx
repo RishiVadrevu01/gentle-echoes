@@ -117,7 +117,7 @@ const AppreciationCard = ({ card, index }: { card: GratitudeCard; index: number 
       className="card-romantic text-center group cursor-default shadow-sm hover:shadow-xl"
     >
       <div className="relative mb-4 inline-block">
-        <h3 className="font-serif text-xl md:text-2xl text-foreground group-hover:text-gold transition-colors duration-300">
+        <h3 className="text-xl md:text-2xl text-foreground group-hover:text-gold transition-colors duration-300">
           {card.title}
         </h3>
         <motion.div
@@ -134,6 +134,8 @@ const AppreciationCard = ({ card, index }: { card: GratitudeCard; index: number 
     </motion.div>
   );
 };
+
+import HeartBubbles from "./HeartBubbles";
 
 const GratitudeSection = () => {
   const containerRef = useRef(null);
@@ -160,6 +162,7 @@ const GratitudeSection = () => {
       className="py-24 md:py-32 relative overflow-hidden gradient-blush-lavender"
     >
       <FloatingPetals />
+      <HeartBubbles />
 
       {/* Magical Sticker Gallery */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -234,7 +237,7 @@ const GratitudeSection = () => {
         </motion.div>
       </div>
 
-      <div className="prose-romantic relative z-10">
+      <div className="prose-romantic relative z-10" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
@@ -242,8 +245,8 @@ const GratitudeSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <span className="font-script text-gold text-2xl">Chapter Three</span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mt-4">
+          <span className="font-script text-gold text-2xl" style={{ fontFamily: '' }}>Chapter Three</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-foreground mt-4">
             What You Mean to Me
           </h2>
         </motion.div>
@@ -255,7 +258,7 @@ const GratitudeSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center mb-16"
         >
-          <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl text-foreground italic max-w-2xl mx-auto leading-relaxed">
+          <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl text-foreground italic max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: '' }}>
             "You taught me what it means to be seen."
           </blockquote>
         </motion.div>
@@ -273,10 +276,8 @@ const GratitudeSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center"
         >
-          <p className="font-serif text-xl md:text-2xl text-foreground max-w-md mx-auto">
-            I don't love who you could be.
-            <br />
-            <span className="text-gold">I love who you are.</span>
+          <p className="text-xl md:text-2xl text-foreground max-w-md mx-auto">
+            I can’t love any woman in this world the way I have loved you. I can’t imagine anyone ever taking your place. I don’t know what the future holds, but one thing I know for certain — <span className="text-gold">you are my first love, and you will always be my last.</span>
           </p>
         </motion.div>
       </div>

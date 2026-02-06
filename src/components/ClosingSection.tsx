@@ -109,7 +109,7 @@ const ClosingSection = () => {
       />
 
       {/* Background Image - first.jpeg */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 z-0 flex items-start pt-20 justify-center pointer-events-none overflow-hidden">
         <motion.img
           initial={{ opacity: 0, scale: 1.1 }}
           whileInView={{ opacity: 0.25, scale: 1 }}
@@ -120,16 +120,16 @@ const ClosingSection = () => {
         />
       </div>
 
-      <div className="prose-romantic text-center relative z-10">
+      <div className="prose-romantic text-center relative z-10" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
         <motion.div
           ref={contentRef}
           initial={{ opacity: 0, y: 30 }}
           animate={isContentInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="font-script text-gold text-2xl">The Closing</span>
+          <span className="font-script text-gold text-2xl" style={{ fontFamily: '' }}>The Closing</span>
 
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mt-6 mb-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-foreground mt-6 mb-8">
             No matter what you decide,
             <br />
             <span className="text-gold">thank you</span> for being part of my story.
@@ -173,10 +173,10 @@ const ClosingSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-8"
         >
-          <p className="font-script text-2xl md:text-4xl text-foreground">
+          <p className="font-script text-2xl md:text-4xl text-foreground" style={{ fontFamily: '' }}>
             ~ please forgive me ❤️
           </p>
-          <p className="font-script text-2xl md:text-4xl text-foreground">
+          <p className="font-script text-2xl md:text-4xl text-foreground" style={{ fontFamily: '' }}>
             ~ Will you be my valentine ❤️
           </p>
 
@@ -188,6 +188,7 @@ const ClosingSection = () => {
               className="group min-w-[140px]"
               onClick={handleYesClick}
               disabled={status === "sending" || status === "success"}
+              style={{ fontFamily: '"Times New Roman", Times, serif' }}
             >
               {status === "idle" && (
                 <>
@@ -210,12 +211,22 @@ const ClosingSection = () => {
                 size="lg"
                 className="group"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                style={{ fontFamily: '"Times New Roman", Times, serif' }}
               >
                 <Heart className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                 NO
               </Button>
             </motion.div>
           </div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={isButtonsInView ? { opacity: 1.0, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-foreground/80 text-sm italic mt-20 max-w-xs mx-auto px-4"
+          >
+            you must select on option please , it ok even you select no but you have to select one
+          </motion.p>
         </motion.div>
 
         {/* Footer signature */}
