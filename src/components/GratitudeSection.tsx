@@ -147,6 +147,14 @@ const GratitudeSection = () => {
   const isQuoteInView = useInView(quoteRef, { once: true, margin: "-50px" });
   const isClosingInView = useInView(closingRef, { once: true, margin: "-100px" });
 
+  useEffect(() => {
+    if (isHeaderInView) {
+      import("@/lib/analytics").then(({ trackSectionEntry }) => {
+        trackSectionEntry("Gratitude Section (Chapter 3)");
+      });
+    }
+  }, [isHeaderInView]);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]

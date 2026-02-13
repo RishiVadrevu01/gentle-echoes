@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import heroBg from "@/assets/vibha-photo .jpeg";
 import lakeView from "@/assets/lake-view.jpeg";
@@ -7,13 +8,24 @@ import Butterfly from "./Butterfly";
 import RosePetalParticles from "./RosePetalParticles";
 
 const HeroSection = () => {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true });
+
+  useEffect(() => {
+    if (isInView) {
+      import("@/lib/analytics").then(({ trackSectionEntry }) => {
+        trackSectionEntry("Hero Section (Start)");
+      });
+    }
+  }, [isInView]);
+
   const scrollToNext = () => {
     const nextSection = document.getElementById("journey");
     nextSection?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-start pt-16 md:pt-24 gradient-cream-blush watercolor-overlay overflow-hidden">
+    <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-start pt-16 md:pt-24 gradient-cream-blush watercolor-overlay overflow-hidden">
       <RosePetalParticles />
       {/* Side Background Images (keeping them absolute but less intrusive) */}
       <div className="absolute inset-0 z-0 pointer-events-none">

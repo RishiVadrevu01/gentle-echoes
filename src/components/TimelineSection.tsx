@@ -151,6 +151,15 @@ const TimelineSection = () => {
     };
   }, [vantaEffect]);
 
+  // Track section entry
+  useEffect(() => {
+    if (isHeaderInView) {
+      import("@/lib/analytics").then(({ trackSectionEntry }) => {
+        trackSectionEntry("Timeline Section (Chapter 1)");
+      });
+    }
+  }, [isHeaderInView]);
+
   return (
     <section id="journey" className="py-32 md:py-48 bg-background relative overflow-hidden">
       {/* Vanta Birds Background Effect */}

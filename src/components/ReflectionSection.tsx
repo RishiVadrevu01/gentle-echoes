@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { MessageCircle, Sprout, Handshake, Sparkles } from "lucide-react";
 import collage from "@/assets/collage.jpeg";
 import cute from "@/assets/cute .jpeg";
@@ -76,6 +76,14 @@ const ReflectionSection = () => {
   const closingRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-50px" });
   const isClosingInView = useInView(closingRef, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (isHeaderInView) {
+      import("@/lib/analytics").then(({ trackSectionEntry }) => {
+        trackSectionEntry("Reflection Section (Chapter 2)");
+      });
+    }
+  }, [isHeaderInView]);
 
   return (
     <section className="py-24 md:py-32 bg-blush/30 relative">

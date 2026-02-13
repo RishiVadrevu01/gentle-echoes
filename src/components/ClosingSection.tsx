@@ -22,6 +22,14 @@ const ClosingSection = () => {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
 
   useEffect(() => {
+    if (isContentInView) {
+      import("@/lib/analytics").then(({ trackSectionEntry }) => {
+        trackSectionEntry("Closing Section (Final)");
+      });
+    }
+  }, [isContentInView]);
+
+  useEffect(() => {
     if (!vantaEffect && window.VANTA && vantaRef.current) {
       setVantaEffect(
         window.VANTA.BIRDS({
